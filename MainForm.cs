@@ -23,17 +23,19 @@ namespace Projekt_ToDoList
         }
         private void bNovyUkol_Click(object sender, EventArgs e)
         {
-
+            NovyUkolForm novyUkolForm = new NovyUkolForm();
+            novyUkolForm.ShowDialog();
         }
 
         private void bSeznam_Click(object sender, EventArgs e)
         {
-
+            SeznamUkoluForm seznamUkoluForm = new SeznamUkoluForm();
+            seznamUkoluForm.ShowDialog();
         }
 
         private void bKonec_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
     }
 }
