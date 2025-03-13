@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Projekt_ToDoList
 {
-    public partial class NovyUkolForm: Form
+    public partial class NovyUkolForm : Form
     {
         public NovyUkolForm()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
