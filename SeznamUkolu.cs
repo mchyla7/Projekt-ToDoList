@@ -14,6 +14,7 @@ namespace Projekt_ToDoList
         public SeznamUkoluForm()
         {
             InitializeComponent();
+            SpravaUkolu.NacistUkoly();
             LoadDataGridView();
         }
 
@@ -49,6 +50,7 @@ namespace Projekt_ToDoList
             }
         }
 
+
         public static class SpravaUkolu
         {
             private static List<Ukol> ukoly = new List<Ukol>();
@@ -80,10 +82,13 @@ namespace Projekt_ToDoList
         {
             var ukoly = SpravaUkolu.ZiskatUkoly();
             dataGridView1.DataSource = ukoly;
-        }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            // Custom hlavička
+            dataGridView1.Columns["Nazev"].HeaderText = "Název úkolu";
+            dataGridView1.Columns["Popis"].HeaderText = "Popis úkolu";
+            dataGridView1.Columns["Datum"].HeaderText = "Datum splnění";
+            dataGridView1.Columns["JeSplneno"].HeaderText = "Splněno";
+            dataGridView1.Columns["DatumPridani"].HeaderText = "Datum přidání";
 
         }
 
@@ -99,6 +104,7 @@ namespace Projekt_ToDoList
                 var selectedRow = dataGridView1.SelectedRows[0];
                 var ukol = (Ukol)selectedRow.DataBoundItem;
                 SmazatUkol.Smazat(ukol);
+                SpravaUkolu.NacistUkoly();
                 LoadDataGridView();
             }
             else
