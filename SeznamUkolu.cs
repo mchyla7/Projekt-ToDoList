@@ -42,6 +42,11 @@ namespace Projekt_ToDoList
                     DatumPridani = DateTime.ParseExact(lines[5].Split(':')[1].Trim().Trim('"'), "dd.MM.yyyy", CultureInfo.InvariantCulture)
                 };
             }
+
+            public override string ToString()
+            {
+                return $"---\nNázev: \"{Nazev}\"\nPodrobnosti: \"{Popis}\"\nDatum: \"{Datum.ToString("dd.MM.yyyy")}\"\nJeSplneno: \"{JeSplneno}\"\nDatum Přidání: \"{DatumPridani.ToString("dd.MM.yyyy")}\"\n";
+            }
         }
 
         public static class SpravaUkolu
@@ -68,6 +73,7 @@ namespace Projekt_ToDoList
             {
                 return ukoly;
             }
+
         }
 
         private void LoadDataGridView()
@@ -75,6 +81,38 @@ namespace Projekt_ToDoList
             var ukoly = SpravaUkolu.ZiskatUkoly();
             dataGridView1.DataSource = ukoly;
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bUpravit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bSmazat_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var selectedRow = dataGridView1.SelectedRows[0];
+                var ukol = (Ukol)selectedRow.DataBoundItem;
+                SmazatUkol.Smazat(ukol);
+                LoadDataGridView();
+            }
+            else
+            {
+                MessageBox.Show("Vyberte úkol, který chcete smazat.");
+            }
+        }
+
+
+        private void bZpet_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }
+
 
