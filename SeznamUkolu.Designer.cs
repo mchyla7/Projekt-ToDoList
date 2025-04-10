@@ -62,7 +62,7 @@
             Controls.Add(bUpravit);
             Controls.Add(dataGridView1);
             Name = "SeznamUkoluForm";
-            Text = "Seznam Úkolů";
+            Text = "Seznam úkolů";
             Load += SeznamUkoluForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

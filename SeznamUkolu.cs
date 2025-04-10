@@ -90,12 +90,41 @@ namespace Projekt_ToDoList
             dataGridView1.Columns["JeSplneno"].HeaderText = "Splněno";
             dataGridView1.Columns["DatumPridani"].HeaderText = "Datum přidání";
 
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column.Name != "JeSplneno")
+                {
+                    column.ReadOnly = true;
+                }
+            }
+
+            // Povolení úprav pouze pro sloupec "JeSplneno"
+            dataGridView1.Columns["JeSplneno"].ReadOnly = false;
         }
 
         private void bUpravit_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var selectedRow = dataGridView1.SelectedRows[0];
+                var ukol = (Ukol)selectedRow.DataBoundItem;
+                SmazatUkol.Smazat(ukol);
 
+                // Pass the selected task to the constructor of UpravitUkolForm
+                UpravitUkolForm upravitUkolForm = new UpravitUkolForm(ukol);
+                upravitUkolForm.ShowDialog();
+
+                // Reload the data grid view after potential updates
+                SpravaUkolu.NacistUkoly();
+                LoadDataGridView();
+            }
+            else
+            {
+                MessageBox.Show("Vyberte úkol, který chcete upravit.");
+            }
         }
+
+
 
         private void bSmazat_Click(object sender, EventArgs e)
         {
