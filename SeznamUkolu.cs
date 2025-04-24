@@ -110,11 +110,11 @@ namespace Projekt_ToDoList
                 var ukol = (Ukol)selectedRow.DataBoundItem;
                 SmazatUkol.Smazat(ukol);
 
-                // Pass the selected task to the constructor of UpravitUkolForm
+                // Načtení dialogu pro úpravu úkolu
                 UpravitUkolForm upravitUkolForm = new UpravitUkolForm(ukol);
                 upravitUkolForm.ShowDialog();
 
-                // Reload the data grid view after potential updates
+                // Obnovení úkolů
                 SpravaUkolu.NacistUkoly();
                 LoadDataGridView();
             }

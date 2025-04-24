@@ -32,7 +32,7 @@ namespace Projekt_ToDoList
 
                 if (startIndex != -1)
                 {
-                    lines.RemoveRange(startIndex, 6); // Remove the task block
+                    lines.RemoveRange(startIndex, 6); // Odebrat úkol
                     File.WriteAllLines(cesta, lines);
                 }
             }

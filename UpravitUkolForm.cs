@@ -12,7 +12,8 @@ namespace Projekt_ToDoList
             InitializeComponent();
             aktualniUkol = ukol;
 
-            // Fill the form fields with the task data
+            // Vypsání dat do pole
+
             tbNazev.Text = ukol.Nazev;
             tbPodrobnosti.Text = ukol.Popis;
             dtpDatum.Value = ukol.Datum;
@@ -22,12 +23,14 @@ namespace Projekt_ToDoList
         private void bPridat_Click(object sender, EventArgs e)
         {
             // Aktualizace úkolu s novými daty
+
             aktualniUkol.Nazev = tbNazev.Text;
             aktualniUkol.Popis = tbPodrobnosti.Text;
             aktualniUkol.Datum = dtpDatum.Value;
             aktualniUkol.JeSplneno = rbAno.Checked;
 
             // Uložení upraveného úkolu
+
             bool ulozeno = UlozitUkol.UlozeniUkolu(aktualniUkol.Nazev, aktualniUkol.Popis, (decimal)aktualniUkol.Datum.ToOADate(), aktualniUkol.JeSplneno, (decimal)aktualniUkol.DatumPridani.ToOADate() );
             if (ulozeno)
             {
